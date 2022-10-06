@@ -4,8 +4,8 @@
     "description": "A project template to make creating new (api platform) projects easier.",
     "keywords": ["ubi-template", "ubi-apip", "ubi-apiplatform", "ubitransport"],
     "license": "MIT",
-    "prefer-stable": true
-    "minimum-stability": "stable"
+    "prefer-stable": true,
+    "minimum-stability": "stable",
     "require": {
         "php": ">=8.1",
         "ext-ctype": "*",
@@ -35,7 +35,7 @@
         "symfony/twig-bundle": "*",
         "symfony/uid": "*",
         "symfony/validator": "*",
-        "symfony/yaml": "*",
+        "symfony/yaml": "*"
     },
     "flex-require": {
         "symfony/console": "*",
