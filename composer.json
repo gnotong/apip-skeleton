@@ -1,0 +1,111 @@
+{
+    "name": "ubitransports/apip-skeleton",
+    "type": "template",
+    "description": "A project template to make creating new (api platform) projects easier.",
+    "keywords": ["ubi-template", "ubi-apip", "ubi-apiplatform", "ubitransport"],
+    "license": "MIT",
+    "prefer-stable": true
+    "minimum-stability": "stable"
+    "require": {
+        "php": ">=8.1",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/flex": "^2",
+        "api-platform/core": "*",
+        "doctrine/annotations": "*",
+        "doctrine/doctrine-bundle": "*",
+        "doctrine/doctrine-migrations-bundle": "*",
+        "doctrine/orm": "*",
+        "nelmio/cors-bundle": "*",
+        "phpdocumentor/reflection-docblock": "*",
+        "phpstan/phpdoc-parser": "*",
+        "ramsey/uuid-doctrine": "*",
+        "stof/doctrine-extensions-bundle": "*",
+        "symfony/asset": "*",
+        "symfony/console": "*",
+        "symfony/dotenv": "*",
+        "symfony/expression-language": "*",
+        "symfony/framework-bundle": "*",
+        "symfony/property-access": "*",
+        "symfony/property-info": "*",
+        "symfony/proxy-manager-bridge": "*",
+        "symfony/runtime": "*",
+        "symfony/security-bundle": "*",
+        "symfony/serializer": "*",
+        "symfony/twig-bundle": "*",
+        "symfony/uid": "*",
+        "symfony/validator": "*",
+        "symfony/yaml": "*",
+    },
+    "flex-require": {
+        "symfony/console": "*",
+        "symfony/dotenv": "*",
+        "symfony/framework-bundle": "*",
+        "symfony/runtime": "*",
+        "symfony/yaml": "*"
+    },
+    "require-dev": {
+      "coduo/php-matcher": "*",
+      "hautelook/alice-bundle": "*",
+      "phpstan/phpstan": "*",
+      "phpunit/phpunit": "*",
+      "symfony/browser-kit": "*",
+      "symfony/css-selector": "*",
+      "symfony/debug-bundle": "*",
+      "symfony/maker-bundle": "*",
+      "symfony/phpunit-bridge": "*",
+      "symfony/web-profiler-bundle": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.1.*"
+        }
+    }
+}
