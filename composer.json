@@ -1,8 +1,8 @@
 {
-    "name": "ubitransports/apip-skeleton",
+    "name": "notgabs/apip-skeleton",
     "type": "template",
     "description": "A project template to make creating new (api platform) projects easier.",
-    "keywords": ["ubi-template", "ubi-apip", "ubi-apiplatform", "ubitransport"],
+    "keywords": ["notgabs-template", "notgabs-apip", "notgabs-apiplatform", "notgabs"],
     "license": "MIT",
     "prefer-stable": true,
     "minimum-stability": "stable",
