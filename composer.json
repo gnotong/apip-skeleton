@@ -35,8 +35,7 @@
         "symfony/twig-bundle": "*",
         "symfony/uid": "*",
         "symfony/validator": "*",
-        "symfony/yaml": "*",
-        "ubitransport/keycloak-security-bundle": "0.1.0"
+        "symfony/yaml": "*"
     },
     "flex-require": {
         "symfony/console": "*",
@@ -57,12 +56,6 @@
       "symfony/phpunit-bridge": "*",
       "symfony/web-profiler-bundle": "*"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/ubitransports/keycloak-security-bundle.git"
-        }
-    ],
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
