@@ -1,0 +1,3 @@
+php docker/php/set_database.php test
+
+php bin/phpunit --coverage-text --colors=never
