@@ -37,5 +37,5 @@ fi
 
 docker_example=docker/php/.docker.env.example
 if test -f "$docker_example"; then
-  mv $docker_example .docker.env
+  cp $docker_example .docker.env
 fi
