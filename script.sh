@@ -35,7 +35,4 @@ if test -f "$env_test_file"; then
   printf "==> The test database name is $db_name if you want to change it please edit the file .env.test \n"
 fi
 
-docker_example=docker/php/.docker.env.example
-if test -f "$docker_example"; then
-  cp $docker_example .docker.env
-fi
+cp docker/php/.docker.env.example .docker.env
