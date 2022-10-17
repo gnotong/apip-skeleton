@@ -1,6 +1,6 @@
 FROM europe-west1-docker.pkg.dev/ubitransport-tools/services/nginx-php8.1-server:9n611vlmtux50g1dk672fcv9cfm6kftwzxd5bg3f
 
-COPY --chown=www-data:www-data . /app
+COPY --chown=www-data:www-data .. /app
 
 USER www-data:www-data
 
