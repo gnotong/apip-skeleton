@@ -92,12 +92,17 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "custom-cmd": [
+            "chmod +x script.sh",
+            "./script.sh"
+        ],
         "post-install-cmd": [
             "@auto-scripts",
             "@php -r \"file_exists('.ci/fixer') || copy('.ci/fixer', '.ci/fixer');\"",
             "@php -r \"file_exists('.ci/tests') || copy('.ci/tests', '.ci/tests');\"",
             "@php -r \"file_exists('.cloud/cloudbuild-protected.yaml') || copy('.cloud/cloudbuild-protected.yaml', '.cloud/cloudbuild-protected.yaml');\"",
-            "@php -r \"file_exists('.cloud/cloudbuild.yaml') || copy('.cloud/cloudbuild.yaml', '.cloud/cloudbuild.yaml');\""
+            "@php -r \"file_exists('.cloud/cloudbuild.yaml') || copy('.cloud/cloudbuild.yaml', '.cloud/cloudbuild.yaml');\"",
+            "@custom-cmd"
         ],
         "post-update-cmd": [
             "@auto-scripts"

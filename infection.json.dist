@@ -1,0 +1,19 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Migrations",
+            "Kernel.php"
+        ]
+    },
+    "logs": {
+        "text": "infection.log",
+        "json": "infection-log.json"
+    },
+    "mutators": {
+        "@default": true
+    },
+    "timeout": 120
+}
