@@ -67,6 +67,16 @@ _Note:_ if you have 404 error page, relaunch the command `make start`
 
 ---
 
+## Data Base
+
+If your application need to use DB, edit the DB url in the `.env` file and add for example the following
+
+```
+DATABASE_URL=pgsql://postgres:postgres@postgresql:5432/your_service_name
+```
+
+launch the command `make db` to create you db
+
 ## Useful commands
 
 If you just installed the project, it should already run, but to start it manually, run this command :

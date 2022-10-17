@@ -29,6 +29,16 @@ make php-cs-fix
 
 ## Tests
 
+### Prerequisites
+
+open the `.env.test` file change the db url
+
+for example:
+
+```
+DATABASE_URL=pgsql://postgres:postgres@postgresql:5432/your_service_name_test
+```
+
 ### Regular test run
 To run the entire test suite :
 ````
