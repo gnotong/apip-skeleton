@@ -1,0 +1,87 @@
+# This file is pasted in each MS, added from filesGeneralPathCopy.php
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+.phpunit.result.cache
+/coverage/
+/coverage-specific/
+###< symfony/phpunit-bridge ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+/.composer/
+
+### phpcs-fixer ###
+.php_cs.cache
+php-cs-fixer.phar
+.php-cs-fixer.cache
+
+### github ###
+auth.json
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# PHPStorm project files
+/.idea
+
+# VSCode project files
+/.vscode
+
+# Eclipse project files
+/.cache
+.project
+/.settings
+.buildpath
+
+# Sublime project files
+.sublime-project
+.sublime-workspace
+
+# Netbeans project files
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# PHP quality analysis
+tmp-php-quality-analysis/
+
+# npm
+/node_modules
+
+# Infection
+infection.phar*
+infection.log
+infection-log.json
+infection.json
+coverage-infection/
+
+# Docker environment variables
+.docker.env
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
