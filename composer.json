@@ -94,12 +94,7 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "echo \"\n\n1- => Donot forget to define the MS_NAME in the .env file. Example: MS_NAME=test-service",
-            "echo \"\n2- => Change the api platform url prefix from `/api` to `/` in config/routes/api_platform.yaml",
-            "echo \"\n3- => Donot forget to add an entry in the /etc/hosts file. Example: 127.0.0.1    test-service.local",
-            "echo \"\n4- => Donot forget to enable the reverse proxy",
-            "echo \"\n5- => Access your application using a urlof this type `http://test-service.local`",
-            "echo \"\n6- => file_exists('.ci/tests') || copy('.ci/tests', '.ci/tests');\""
+            "php instructions.php"
         ],
         "post-update-cmd": [
             "@auto-scripts"
