@@ -94,18 +94,15 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "@php -r \"file_exists('.ci/fixer') || copy('.ci/fixer', '.ci/fixer');\"",
-            "@php -r \"file_exists('.ci/tests') || copy('.ci/tests', '.ci/tests');\"",
-            "@php -r \"file_exists('.gitignore') || copy('custom/.gitignore', '.gitignore');\"",
-            "@php -r \"file_exists('docker-compose.yml') || copy('docker-compose.yml', 'docker-compose.yml');\"",
-            "@php -r \"file_exists('README.md') || copy('README.md', 'README.md');\""
+            "echo \"\n\n1- => Donot forget to define the MS_NAME in the .env file. Example: MS_NAME=test-service",
+            "echo \"\n2- => Change the api platform url prefix from `/api` to `/` in config/routes/api_platform.yaml",
+            "echo \"\n3- => Donot forget to add an entry in the /etc/hosts file. Example: 127.0.0.1    test-service.local",
+            "echo \"\n4- => Donot forget to enable the reverse proxy",
+            "echo \"\n5- => Access your application using a urlof this type `http://test-service.local`",
+            "echo \"\n6- => file_exists('.ci/tests') || copy('.ci/tests', '.ci/tests');\""
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ],
-        "post-status-cmd": [
-            "sudo chmod +x script.sh",
-            "./script.sh"
         ]
     },
     "conflict": {
