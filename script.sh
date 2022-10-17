@@ -34,5 +34,3 @@ if test -f "$env_test_file"; then
   sed -i "s:db_name_test:$db_name:g" $env_test_file
   printf "==> The test database name is $db_name if you want to change it please edit the file .env.test \n"
 fi
-
-cp docker/php/.docker.env.example .docker.env

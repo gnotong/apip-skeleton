@@ -96,15 +96,16 @@
             "@auto-scripts",
             "@php -r \"file_exists('.ci/fixer') || copy('.ci/fixer', '.ci/fixer');\"",
             "@php -r \"file_exists('.ci/tests') || copy('.ci/tests', '.ci/tests');\"",
-            "@php -r \"file_exists('.docker.env.example') || copy('.docker.env.example', '.docker.env');\"",
             "@php -r \"file_exists('.gitignore') || copy('custom/.gitignore', '.gitignore');\"",
             "@php -r \"file_exists('docker-compose.yml') || copy('docker-compose.yml', 'docker-compose.yml');\"",
-            "@php -r \"file_exists('README.md') || copy('README.md', 'README.md');\"",
-            "sudo chmod +x script.sh",
-            "./script.sh"
+            "@php -r \"file_exists('README.md') || copy('README.md', 'README.md');\""
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "post-status-cmd": [
+            "sudo chmod +x script.sh",
+            "./script.sh"
         ]
     },
     "conflict": {
