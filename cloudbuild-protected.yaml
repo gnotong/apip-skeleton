@@ -1,0 +1,55 @@
+steps:
+    # Hadolint
+    - name: hadolint/hadolint:latest-alpine
+      entrypoint: hadolint
+      args: ["-t", "error", "/workspace/Dockerfile"]
+
+    # Docker Build
+    - name: 'gcr.io/cloud-builders/docker'
+        # waitFor: ['version']
+      args: ['build', '-t',
+             'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:${SHORT_SHA}',
+             '--cache-from', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:${SHORT_SHA}', '.']
+
+    - name: gcr.io/cloud-builders/docker
+        # waitFor: ['version']
+      id: tag-runner-image
+      args:
+          - 'tag'
+          - 'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:${SHORT_SHA}'
+          - 'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:latest'
+
+    # Docker push short tag to Google Artifact Registry
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+          - 'push'
+          - 'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:${SHORT_SHA}'
+
+    # Docker push latest to Google Artifact Registry
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+          - 'push'
+          - 'europe-west1-docker.pkg.dev/${PROJECT_ID}/services/${REPO_NAME}:latest'
+
+    # Change image tag and push to main
+    - name: alpine/k8s:1.20.7
+      entrypoint: bash
+      args:
+          - '-c'
+          - |-
+              apk add --update-cache yq
+              git clone --branch ${BRANCH_NAME} https://ubi-robot:$$GITHUB_ACCESS_TOKEN@github.com/ubitransports/${REPO_NAME}-manifests.git /tmp/manifests
+              cd /tmp/manifests/helm
+              yq eval -i '.image.tag = "${SHORT_SHA}"' values.yaml
+              git config --global user.name "Cloud Build Runner"
+              git config --global user.email "ubi-eng-devops@ubitransport.com"
+              git add .
+              git commit -m "set image to ${REPO_NAME}:${SHORT_SHA}"
+              git push -u origin ${BRANCH_NAME}
+      secretEnv:
+          - "GITHUB_ACCESS_TOKEN"
+
+availableSecrets:
+    secretManager:
+        - versionName: 'projects/${PROJECT_ID}/secrets/github-access-token/versions/latest'
+          env: 'GITHUB_ACCESS_TOKEN'

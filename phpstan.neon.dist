@@ -1,0 +1,22 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+parameters:
+    # If phpstan has some trouble loading files:
+    scanDirectories:
+        - tests
+        - src
+    level: 9
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - src/Kernel.php
+        - tests/bootstrap.php
+        - vendor
+        - var
+        - migrations
+    treatPhpDocTypesAsCertain: true
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false # Force array<Type>, array<int, Type> or Type[] annotations

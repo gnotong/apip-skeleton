@@ -1,0 +1,64 @@
+version: '3.3'
+
+services:
+  webserver:
+    image: "ubitransport/apache:7.4-ms"
+    volumes:
+      - ./:/var/www/ubitransport-microservices.project.local/htdocs/current
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${MS_NAME}.rule=Host(`${MS_NAME}.local`)"
+      - "traefik.docker.network=web-proxy"
+    restart: unless-stopped
+    networks:
+      web-proxy: ~
+    extra_hosts:
+      - keycloak.local:${REVERSE_PROXY_IP}
+      - 2cloud.local:${REVERSE_PROXY_IP}
+
+  php:
+    image: "ubitransport/php:8.1-ms"
+    working_dir: /var/www/ubitransport-microservices.project.local/htdocs/current
+    volumes:
+      - ./:/var/www/ubitransport-microservices.project.local/htdocs/current
+      - ~/.config/gcloud:/gcp/config:ro
+    environment:
+      SYMFONY_PHPUNIT_VERSION: 9.5
+      XDEBUG_CONFIG: "client_host=${IP_GATEWAY}"
+      PHP_IDE_CONFIG: "serverName=${MS_NAME}-server"
+      CLOUDSDK_CONFIG: "/gcp/config"
+      GOOGLE_APPLICATION_CREDENTIALS: "/gcp/config/application_default_credentials.json"
+    env_file:
+      - .docker.env
+    restart: unless-stopped
+    networks:
+      web-proxy: ~
+    extra_hosts:
+      - keycloak.local:${REVERSE_PROXY_IP}
+      - 2cloud.local:${REVERSE_PROXY_IP}
+
+  postgresql:
+    ports:
+      - 11100:5432
+    image: "postgres:14.1"
+    labels:
+      database-service.pg: "pg-${MS_NAME}"
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      db: ~
+      web-proxy:
+        aliases:
+          - ${MS_NAME}.postgres
+
+volumes:
+  database:
+
+networks:
+  db: ~
+  web-proxy:
+    external: true
