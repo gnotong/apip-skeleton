@@ -8,6 +8,7 @@ The purpose of this service is to ...
 Here you'll find all the information you need to install and run the project locally.
 
 * [Installation](./docs/usage/installation.md)
+* [Secure your api](./docs/usage/security.md)
 * [Run the quality tools & tests](./docs/usage/quality_test_tools.md)
 
 ## Contributing
